@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import time
 
 print("Enter Unfamiliar Skills: ")
 unfam_skills = list(map(str, input('>>').split()))
@@ -28,7 +29,16 @@ def find_jobs():
 
             if not any(skill in skills for skill in unfam_skills):
                 # Only gives back results if the "unfamiliar skills" are Missing
-                print(f'Company Name: {company_name}')
-                print(f'Required Skills: {skills}')
-                print(f'Link: {link}')
-                print('')  # Add Empty Line
+                with open(f'Data/{company_name}.txt', 'w') as f:
+                    f.write(f'Company Name: {company_name}\n')
+                    f.write(f'Required Skills: {skills}\n')
+                    f.write(f'Link: {link}\n')
+                print(f'File Saved: {company_name}')
+
+
+if __name__ == '__main__':
+    while True:
+        find_jobs()
+        time_wait = 10
+        print(f'Waiting {time_wait} minutes...')
+        time.sleep(time_wait*60)  # Sets a timer of 10 minutes
