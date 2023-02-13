@@ -30,6 +30,7 @@ def find_jobs():
             if not any(skill in skills for skill in unfam_skills):
                 # Only gives back results if the "unfamiliar skills" are Missing
                 with open(f'Data/{company_name}.txt', 'w') as f:
+                    # Saves every company as its own file
                     f.write(f'Company Name: {company_name}\n')
                     f.write(f'Required Skills: {skills}\n')
                     f.write(f'Link: {link}\n')
